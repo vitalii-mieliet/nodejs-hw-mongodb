@@ -3,6 +3,8 @@ import cors from 'cors';
 import pino from 'pino-http';
 import getEnvVar from './utils/getEnvVar.js';
 import contactsRouter from './routers/contacts.js';
+import errorHandler from './middlewares/errorHandler.js';
+import notFoundHandler from './middlewares/notFoundHandler.js';
 
 const PORT = Number(getEnvVar('PORT', '3000'));
 
@@ -21,14 +23,11 @@ const setupServer = () => {
 
   app.use(contactsRouter);
 
-  app.use((req, res) => {
-    res.status(404).json({
-      message: 'Not found',
-    });
-  });
+  app.use(notFoundHandler);
+  app.use(errorHandler);
 
   app.listen(PORT, () => {
-    console.log(`Server is runing on port: ${PORT}`);
+    console.log(`Server is runing on port: http://localhost:${PORT}`);
   });
 };
 
