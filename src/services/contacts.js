@@ -5,9 +5,41 @@ const getAllContatcts = async () => {
   return data;
 };
 
-const getContactById = async (contactId) => {
-  const data = await ContactCollection.findById(contactId);
+const getContactById = async (id) => {
+  const data = await ContactCollection.findById(id);
   return data;
 };
 
-export { getAllContatcts, getContactById };
+const createContact = async (payload) => {
+  const data = await ContactCollection.create(payload);
+  return data;
+};
+
+const updateContact = async (id, payload, options = {}) => {
+  const result = await ContactCollection.findOneAndUpdate(
+    { _id: id },
+    payload,
+    {
+      new: true,
+      includeResultMetadata: true,
+      ...options,
+    },
+  );
+
+  if (!result || !result.value) return null;
+
+  return result.value;
+};
+
+const deleteContact = async (_id) => {
+  const data = await ContactCollection.findOneAndDelete({ _id });
+  return data;
+};
+
+export {
+  getAllContatcts,
+  getContactById,
+  createContact,
+  deleteContact,
+  updateContact,
+};
