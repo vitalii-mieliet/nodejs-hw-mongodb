@@ -20,7 +20,6 @@ const updateContact = async (id, payload, options = {}) => {
     { _id: id },
     payload,
     {
-      new: true,
       includeResultMetadata: true,
       ...options,
     },
