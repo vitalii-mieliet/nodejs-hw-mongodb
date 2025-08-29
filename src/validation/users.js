@@ -12,9 +12,9 @@ export const createUserSchema = Joi.object({
     'string.pattern.base': 'Invalid email format.',
     'any.required': 'Email is required',
   }),
-  password: Joi.string().string().min(6).max(20).required().messages({
-    'string.min': 'Username should have at least {#limit} characters',
-    'string.max': 'Username should have at most {#limit} characters',
+  password: Joi.string().min(6).max(20).required().messages({
+    'string.min': 'Password should have at least {#limit} characters',
+    'string.max': 'Password should have at most {#limit} characters',
     'any.required': 'Password is required',
   }),
 });
