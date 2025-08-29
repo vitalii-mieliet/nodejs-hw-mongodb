@@ -1,5 +1,6 @@
 import Joi from 'joi';
-import { CONTACT_TYPE, EMAIL_REGEX } from '../constatnts/contacts.js';
+import { CONTACT_TYPE } from '../constatnts/contacts.js';
+import { EMAIL_REGEX } from '../constatnts/index.js';
 
 export const createContactSchema = Joi.object({
   name: Joi.string().min(3).max(20).required().messages({
