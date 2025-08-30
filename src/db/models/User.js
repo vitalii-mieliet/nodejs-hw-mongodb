@@ -4,7 +4,7 @@ import { EMAIL_REGEX } from '../../constatnts/index.js';
 
 const userSchema = new Schema(
   {
-    username: {
+    name: {
       type: String,
       required: true,
     },

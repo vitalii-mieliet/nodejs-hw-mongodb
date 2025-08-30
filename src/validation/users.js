@@ -2,11 +2,11 @@ import Joi from 'joi';
 import { EMAIL_REGEX } from '../constatnts/index.js';
 
 export const createUserSchema = Joi.object({
-  username: Joi.string().min(3).max(20).required().messages({
-    'string.base': 'Username should be a string',
-    'string.min': 'Username should have at least {#limit} characters',
-    'string.max': 'Username should have at most {#limit} characters',
-    'any.required': 'Username is required',
+  name: Joi.string().min(3).max(20).required().messages({
+    'string.base': 'Name should be a string',
+    'string.min': 'Name should have at least {#limit} characters',
+    'string.max': 'Name should have at most {#limit} characters',
+    'any.required': 'Name is required',
   }),
   email: Joi.string().pattern(EMAIL_REGEX).required().messages({
     'string.pattern.base': 'Invalid email format.',
