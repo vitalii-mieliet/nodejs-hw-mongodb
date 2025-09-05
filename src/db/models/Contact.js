@@ -1,5 +1,6 @@
 import { model, Schema } from 'mongoose';
-import { CONTACT_TYPE, EMAIL_REGEX } from '../../constatnts/contacts.js';
+import { CONTACT_TYPE } from '../../constatnts/contacts.js';
+import { EMAIL_REGEX } from '../../constatnts/index.js';
 import { handleSaveError, setUpdateSettings } from '../hooks.js';
 
 const contactSchema = new Schema(
@@ -25,6 +26,11 @@ const contactSchema = new Schema(
       enum: CONTACT_TYPE,
       required: true,
       default: 'personal',
+    },
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true,
     },
   },
   {

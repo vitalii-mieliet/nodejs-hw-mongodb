@@ -10,9 +10,11 @@ export default function (err, req, res, next) {
     return;
   }
 
-  res.status(500).json({
-    status: 500,
-    message: 'Something went wrong',
-    data: err.message,
+  const { status = 500, message = 'Something went wrong' } = err;
+
+  res.status(status).json({
+    status: status,
+    message: err.name,
+    data: message,
   });
 }
